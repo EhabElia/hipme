@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="916" y="701" name="devise_users">
+</datatypes><table x="969" y="764" name="devise_users">
 <row name="id" null="0" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -52,7 +52,7 @@
 <row name="id" null="0" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="id_owner" null="0" autoincrement="0">
+<row name="owner_id" null="0" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="devise_users" row="id" />
 </row>
@@ -98,7 +98,7 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="outfits" row="id" />
 </row>
-<row name="user_id" null="0" autoincrement="0">
+<row name="renter_id" null="0" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="devise_users" row="id" />
 </row>
