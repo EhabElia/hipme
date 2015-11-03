@@ -37,13 +37,25 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="969" y="764" name="devise_users">
+</datatypes><table x="1008" y="497" name="devise_users">
 <row name="id" null="0" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="size" null="0" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="street" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
+<row name="zip" null="0" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="city" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
+<row name="country" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>'NULL'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -52,27 +64,13 @@
 <row name="id" null="0" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="owner_id" null="0" autoincrement="0">
+<row name="user_id" null="0" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="devise_users" row="id" />
+<comment>the owner !</comment>
 </row>
-<row name="address_street" null="0" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>'NULL'</default></row>
-<row name="address_city" null="0" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>'NULL'</default></row>
-<row name="address_zip" null="0" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="address_country" null="0" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>'NULL'</default></row>
-<row name="gender" null="0" autoincrement="0">
-<datatype>VARCHAR(1)</datatype>
-<default>'NULL'</default></row>
-<row name="day_price" null="0" autoincrement="0">
-<datatype>TINYINT</datatype>
+<row name="price" null="0" autoincrement="0">
+<datatype>DECIMAL</datatype>
 <default>NULL</default></row>
 <row name="title" null="0" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -83,7 +81,7 @@
 <row name="size" null="0" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="type" null="1" autoincrement="0">
+<row name="style" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
