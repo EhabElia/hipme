@@ -14,16 +14,15 @@
   background-attachment: fixed;
   background-position: left top;
   background-repeat: no-repeat;
-  padding-top: 200px;
+  padding-top: 10%;
 }
 
 #home h1 {
   color: white;
-  font-size: 76pt;
+  font-size: $base-size + 50pt;
 }
 
 #home h2 {
   color: white;
-  font-size: 32pt;
-  margin-top: 100px;
+  font-size: $base-size + 14pt;
 }
