@@ -8,7 +8,9 @@ class OutfitsController < ApplicationController
   end
 
   def new
-    @outift = Outfit.new
+    @outfit = Outfit.new
+    @types = [ "Urban", "Hipster", "For a job interview", "For a night out" ]
+    @sizes = [ "165cm", "170cm", "175cm", "180cm", "185cm", "190cm" ]
   end
 
   def create
@@ -39,4 +41,3 @@ class OutfitsController < ApplicationController
     @outfit = Outfit.find(params[:id])
   end
 end
-
