@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require "faker"
 # SEEDS
 hipword = ["look", "style", "fame", "allure", "genre", "air", "eleganza", "elegance", "apparence", "chic", "posture"]
 all_styles = Outfit::ALL_STYLES
@@ -26,7 +27,7 @@ style_per_user = 5; # number of styles generated for each user
 ##########################################
 
 # create 1 user for each tester
-User.delete_all if clean_before_seed
+User.destroy_all if clean_before_seed
 User.create(email: "max@hipme.fr", firstname: "maxime", password: "uriennnn")
 User.create(email: "pedro@hipme.fr", firstname: "pedro", password: "duqueeee")
 User.create(email: "ehab@hipme.fr", firstname: "ehab", password: "eliaaaaa")

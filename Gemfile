@@ -16,10 +16,11 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 
-gem 'faker'
+
 gem 'country_select'
 
 group :development, :test do
+  gem 'faker'
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'quiet_assets'
