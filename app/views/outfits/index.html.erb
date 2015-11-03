@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <% @outfits.each do |outfit| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <span class="card-bg" style="background-image:url('https://unsplash.it/600/300?image=3')"></span>
+          <span class="card-gradient"></span>
+          <span class="card-category">Popular</span>
+          <span class="card-text">
+            <h2><%= outfit.title %></h2>
+            <p><%= outfit.description %></p>
+          </span>
+          <span class="card-user">
+            <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
+          </span>
+          <%= link_to "", outfit_path(outfit), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!--
+<div class="card">
+        <span class="card-bg" style="background-image: url('https://unsplash.it/600/300?image=1')"></span>
+        <span class="card-gradient"></span>
+        <span class="card-category">Popular</span>
+        <span class="card-text">
+          <h2>Some stuff</h2>
+          <p>Very cool stuff, useful and smart</p>
+        </span>
+        <span class="card-user">
+          <img src="http://placehold.it/50x50" class="avatar avatar-bordered">
+        </span>
+        <a href="#" class="card-link"></a>
+      </div> -->
+<!-- <div class="col-xs-12 col-sm-4">
+  <div class="card">
+    <span class="card-bg" style="background-image: url('https://unsplash.it/600/300?image=0')"></span>
+    <span class="card-gradient"></span>
+    <span class="card-category">Popular</span>
+    <span class="card-text">
+      <h2>Some stuff</h2>
+      <p>Very cool stuff, useful and smart</p>
+    </span>
+    <span class="card-user">
+      <img src="http://placehold.it/50x50" class="avatar avatar-bordered">
+    </span>
+    <a href="#" class="card-link"></a>
+  </div>
+</div> -->
