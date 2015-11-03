@@ -9,8 +9,8 @@ class OutfitsController < ApplicationController
 
   def new
     @outfit = Outfit.new
-    @types = [ "Urban", "Hipster", "For a job interview", "For a night out" ]
-    @sizes = [ "165cm", "170cm", "175cm", "180cm", "185cm", "190cm" ]
+    @styles = Outfit::ALL_STYLES
+    @sizes = Outfit::ALL_SIZES
   end
 
   def create
