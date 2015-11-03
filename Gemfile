@@ -17,6 +17,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 
 gem 'faker'
+gem 'country_select'
 
 group :development, :test do
   gem 'binding_of_caller'

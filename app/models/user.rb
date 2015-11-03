@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+<<<<<<< HEAD
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :outfits
 
@@ -19,4 +20,12 @@ class User < ActiveRecord::Base
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
+=======
+
+  #dependencies
+  has_many :outfits, dependent: :destroy
+
+  # properties
+  validates :firstname, presence: true
+>>>>>>> ec4295e165d7402835590eb56da292526050e59b
 end

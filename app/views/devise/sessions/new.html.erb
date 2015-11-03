@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <div data-toggle='modal' data-target='#sign_modal'></div> -->
 <div id="home" class="text-center pagination-centered xpro2">
   <div class="filter"></div>
@@ -17,6 +18,18 @@
         <% end %>
         <div class="text-left">
           <%= render "devise/shared/links" %>
+=======
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h2>Log in</h2>
+      <h3>OK</h3>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :password, required: false %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+>>>>>>> ec4295e165d7402835590eb56da292526050e59b
         </div>
       </div>
     </div>
