@@ -8,7 +8,9 @@ class OutfitsController < ApplicationController
   end
 
   def new
-    @outift = Outfit.new
+    @outfit = Outfit.new
+    @styles = Outfit::ALL_STYLES
+    @sizes = Outfit::ALL_SIZES
   end
 
   def create
@@ -32,11 +34,10 @@ class OutfitsController < ApplicationController
   private
 
   def outfit_params
-    params.require(:outfits).permit(:title, :description, :price, :size, :type)
+    params.require(:outfit).permit(:title, :description, :price, :size, :style)
   end
 
   def set_outfit
     @outfit = Outfit.find(params[:id])
   end
 end
-
