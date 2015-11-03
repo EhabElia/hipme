@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h2><%= @outfit.title %></h2>
+      <p><%= @outfit.description %></p>
+      <p><%= @outfit.price %>€ per day</p>
+      <p><%= @outfit.size %></p>
+      <p><%= @outfit.style %></p>
+      <%= link_to "EDIT", edit_outfit_path(@outfit), class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
