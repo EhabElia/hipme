@@ -4,6 +4,22 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+
+    <h3>You</h3>
+
+    <%= f.input :firstname, required: false %>
+    <%= f.input :lastname, required: false %>
+
+    <h3>Address</h3>
+
+    <%= f.input :street, required: false %>
+    <%= f.input :zip, required: false %>
+    <%= f.input :city, required: false %>
+    <%= f.input :country, required: false %>
+
+    <h3>Identification</h3>
+
+
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -11,7 +27,7 @@
     <% end %>
 
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :password_confirmation, hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
   </div>
 
