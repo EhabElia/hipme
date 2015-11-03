@@ -1,46 +1,40 @@
-<div id="home">
+<div id="home" class="text-center xpro2">
+  <div class="filter"></div>
+  <div class="home-container">
+    <h1> <%# image_tag "logo.png" %>HIP ME.</h1>
+    <h2>Louez du bon goût près de chez vous</h2>
 
-  <h1> <%# image_tag "logo.png" %>HIP ME.</h1>
-  <h2>Louez du bon goût près de chez vous</h2>
-
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4 col-md-10 col-md-offset-1">
-      <div class="row">
-        <form class="form-inline" action="">
-          <div class="input-group">
-            <input type="text" class="form-control" aria-label="..." placeholder="Où ?">
-          </div>
-          <div class="input-group">
-            <input type="date" class="form-control" aria-label="...">
-          </div>
-          <div class="input-group">
-            <input type="date" class="form-control" aria-label="...">
-          </div>
-          <div class="input-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Style <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Urban</a></li>
-              <li><a href="#">Hipster</a></li>
-              <li><a href="#">For a job interview</a></li>
-              <li><a href="#">For a night out</a></li>
-            </ul>
-          </div>
-          <div class="input-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Size <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">165cm</a></li>
-              <li><a href="#">170cm</a></li>
-              <li><a href="#">175cm</a></li>
-              <li><a href="#">180cm</a></li>
-              <li><a href="#">185cm</a></li>
-              <li><a href="#">190cm</a></li>
-            </ul>
-          </div>
-          <div class="input-group">
-            <input type="submit" name="submit" value="HIP ME!" class="btn btn-warning"></input>
-          </div>
-        </form>
+    <form class="form-inline" action="">
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" aria-label="..." placeholder="Où ?">
       </div>
-    </div>
+      <div class="input-group">
+        <input type="date" class="form-control input-lg" aria-label="...">
+      </div>
+      <div class="input-group">
+        <input type="date" class="form-control input-lg" aria-label="...">
+      </div>
+      <div class="input-group">
+        <select id="" class="form-control input-lg">
+          <option>Urban</option>
+          <option>Hipster</option>
+          <option>For a job interview</option>
+          <option>For a night out</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <select id="" class="form-control input-lg">
+          <option>165cm</option>
+          <option>170cm</option>
+          <option>175cm</option>
+          <option>180cm</option>
+          <option>185cm</option>
+          <option>190cm</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input type="submit" name="submit" value="HIP ME!" class="btn btn-warning btn-lg"></input>
+      </div>
+    </form>
   </div>
 </div>

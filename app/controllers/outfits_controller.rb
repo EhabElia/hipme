@@ -1,5 +1,6 @@
 class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
+  before_action :set_style_and_sizes, only: [:new, :edit]
   def index
     @outfits = Outfit.all
   end
@@ -8,7 +9,7 @@ class OutfitsController < ApplicationController
   end
 
   def new
-    @outift = Outfit.new
+    @outfit = Outfit.new
   end
 
   def create
@@ -24,19 +25,28 @@ class OutfitsController < ApplicationController
   end
 
   def update
+    @outfit.update(outfit_params)
+    redirect_to outfits_path
   end
 
   def destroy
+    @outfit.destroy
+    redirect_to outfits_path
   end
 
   private
 
   def outfit_params
-    params.require(:outfits).permit(:title, :description, :price, :size, :type)
+    params.require(:outfit).permit(:title, :description, :price, :size, :style)
   end
 
   def set_outfit
     @outfit = Outfit.find(params[:id])
   end
-end
 
+  def set_style_and_sizes
+    @styles = Outfit::ALL_STYLES
+    @sizes = Outfit::ALL_SIZES
+  end
+
+end
