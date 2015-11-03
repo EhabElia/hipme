@@ -19,15 +19,22 @@ save_object = true; # does not save the objects to db = test only when you edit 
 # seed configuration for OUTFITS
 style_per_user = 5; # number of styles generated for each user
 
-########################################
-#                                      #
-# SEED EXECUTION BELOW - DON'T CHANGE IT
-#                                      #
-########################################
+##########################################
+#                                        #
+# SEED EXECUTION BELOW - DON'T CHANGE IT #
+#                                        #
+##########################################
+
+# create 1 user for each tester
+User.delete_all if clean_before_seed
+User.create(email: "max@hipme.fr", firstname: "maxime", password: "uriennnn")
+User.create(email: "pedro@hipme.fr", firstname: "pedro", password: "duqueeee")
+User.create(email: "ehab@hipme.fr", firstname: "ehab", password: "eliaaaaa")
 
 # create X styles for each user
 Outfit.delete_all if clean_before_seed
 User.all.each do |user|
+  puts "-----\nCreating Outfit for user : #{user.email.upcase}" if print_to_console
   style_per_user.times {
     new_outfit = Outfit.new(
         title: Faker::Name.first_name + "'s " + Faker::Commerce.color + " " + hipword[rand(hipword.size-1)],
