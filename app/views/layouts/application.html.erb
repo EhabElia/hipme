@@ -11,9 +11,8 @@
     <%= render "shared/navbar" %>
     <%= render 'shared/flashes' %>
 
-    <div class="container text-center">
-      <%= yield %>
-    </div>
+    <%= yield %>
+
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
