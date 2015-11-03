@@ -2,3 +2,27 @@
  * SASS code SPECIFIC TO your home page
  * (margin/padding adjustments, background image, etc..)
  * ------------------------------------- */
+
+#home {
+  position:fixed;
+  top:30;
+  left:0;
+  right:0;
+  height:100%;
+  background-image: url('https://images.unsplash.com/photo-1446214814726-e6074845b4ce?dpr=2&fit=crop&fm=jpg&h=1372&ixlib=rb-0.3.5&q=50&w=1700');
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: left top;
+  background-repeat: no-repeat;
+  padding-top: 10%;
+}
+
+#home h1 {
+  color: white;
+  font-size: $base-size + 50pt;
+}
+
+#home h2 {
+  color: white;
+  font-size: $base-size + 14pt;
+}
