@@ -7,12 +7,11 @@
         <h2>Log in</h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs font-devise">
-            <%= f.input :email, required: false, autofocus: true %>
-            <%= f.input :email, required: false, placeholder: "bob@mail.com", label_html: {class: "pull-left font-devise"} %>
+            <%= f.input :email, required: false, autofocus: true, placeholder: "bob@mail.com", label_html: {class: "pull-left font-devise"} %>
             <%= f.input :password, required: false, placeholder: "********", label_html: {class: "pull-left font-devise"}  %>
             <%= f.input :remember_me, as: :boolean, label_html: {class: "pull-left font-devise"}  if devise_mapping.rememberable? %>
           </div>
-          <div class="form-actions moda fade">
+          <div class="form-actions moda">
             <%= f.button :submit, "Log in" %>
           </div>
         <% end %>
