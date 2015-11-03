@@ -6,7 +6,7 @@
         <%= f.input :description, placeholder: "describe your outfit" %>
         <%= f.input :price, placeholder: "type the daily price" %>
         <%= f.input :size, collection: @sizes, prompt: "select outfit size" %>
-        <%= f.input :type, collection: @styles, prompt: "select outfit type" %>
+        <%= f.input :style, collection: @styles, prompt: "select outfit type" %>
         <%# f.input :title, placeholder: "type the outfit name" %>
         <%= f.submit class: "btn btn-danger" %>
       <% end %>

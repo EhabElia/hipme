@@ -34,7 +34,7 @@ class OutfitsController < ApplicationController
   private
 
   def outfit_params
-    params.require(:outfits).permit(:title, :description, :price, :size, :type)
+    params.require(:outfit).permit(:title, :description, :price, :size, :style)
   end
 
   def set_outfit
