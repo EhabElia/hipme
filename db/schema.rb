@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20151103141115) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-<<<<<<< HEAD
     t.string   "provider"
     t.string   "uid"
     t.string   "picture"
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(version: 20151103141115) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
-=======
     t.string   "country"
     t.string   "city"
     t.integer  "zip"
@@ -58,7 +56,6 @@ ActiveRecord::Schema.define(version: 20151103141115) do
     t.string   "size"
     t.string   "firstname"
     t.string   "lastname"
->>>>>>> ec4295e165d7402835590eb56da292526050e59b
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
