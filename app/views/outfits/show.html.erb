@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container padded">
   <div class="row">
     <div class="col-xs-6">
-      <%= image_tag @outfit.picture.url(:large) %>
+      <%= image_tag @outfit.picture.url(:large), width: "100%" %>
     </div>
     <div class="col-xs-6">
       <h2><%= @outfit.title %></h2>
@@ -9,8 +9,8 @@
       <p><%= @outfit.price %>€ per day</p>
       <p><%= @outfit.size %></p>
       <p><%= @outfit.style %></p>
-      <%= link_to "EDIT", edit_outfit_path(@outfit), class: "btn btn-warning" %>
-      <%= link_to "DELETE", outfit_path(@outfit), method: :delete, class: "btn btn-danger" %>
+      <%= link_to "EDIT", edit_user_outfit_path(current_user, @outfit), class: "btn btn-warning" %>
+      <%= link_to "DELETE", user_outfit_path(current_user, @outfit), method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
 </div>

@@ -18,9 +18,9 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    @outfit = Outfit.new(outfit_params)
+    @outfit = current_user.outfits.new(outfit_params)
     if @outfit.save
-      redirect_to outfit_path(@outfit)
+      redirect_to user_outfit_path(@outfit.user, @outfit)
     else
       render :new
     end
@@ -31,12 +31,12 @@ class OutfitsController < ApplicationController
 
   def update
     @outfit.update(outfit_params)
-    redirect_to outfits_path
+    redirect_to user_outfit_path(@outfit.user, @outfit)
   end
 
   def destroy
     @outfit.delete
-    redirect_to outfits_path
+    redirect_to edit_user_registration_path(@outfit.user)
   end
 
   private
