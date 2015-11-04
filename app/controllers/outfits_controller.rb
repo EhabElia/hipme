@@ -30,7 +30,7 @@ class OutfitsController < ApplicationController
   end
 
   def destroy
-    @outfit.destroy
+    @outfit.delete
     redirect_to outfits_path
   end
 

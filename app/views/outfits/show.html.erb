@@ -10,6 +10,7 @@
       <p><%= @outfit.size %></p>
       <p><%= @outfit.style %></p>
       <%= link_to "EDIT", edit_outfit_path(@outfit), class: "btn btn-warning" %>
+      <%= link_to "DELETE", outfit_path(@outfit), method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
 </div>
