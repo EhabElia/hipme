@@ -1,1 +1,24 @@
 @import "home";
+
+.navigation {
+  margin-top: 70px;
+  background-color:yellow;
+}
+
+.body-header {
+  background-color:#BF2332;
+  height: 250px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+}
+
+.body-header img#profile-pic {
+  border-radius: 100%;
+}
+
+.profile-tab {
+  background-color: lightblue;
+  padding: 10px;
+  min-height: 100px;
+}
