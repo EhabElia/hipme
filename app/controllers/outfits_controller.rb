@@ -1,5 +1,5 @@
 class OutfitsController < ApplicationController
-  before_action :set_outfit, only: [:show, :edit, :update, :destroy]
+  before_action :set_outfit, only: [:show, :edit, :update, :destroy, :details]
   before_action :set_style_and_sizes, only: [:new, :edit]
 
   def index
@@ -8,6 +8,17 @@ class OutfitsController < ApplicationController
       marker.lat outfit.latitude
       marker.lng outfit.longitude
     end
+  end
+
+    def styles
+    @outfits = Outfit.all
+    @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
+      marker.lat outfit.latitude
+      marker.lng outfit.longitude
+    end
+  end
+
+  def details
   end
 
   def show
