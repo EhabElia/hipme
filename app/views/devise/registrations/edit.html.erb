@@ -43,22 +43,24 @@
 
       <% else %>
 
-        <% current_user.outfits.each do |outfit| %>
-          <div class="col-xs-12 col-sm-4">
-            <div class="card">
-              <span class="card-bg" style="background-image:url('https://unsplash.it/600/500?image=804')"></span>
-              <span class="card-gradient"></span>
-              <span class="card-category"><%= outfit.style%></span>
-              <span class="card-text">
-                <h2><%= outfit.title %></h2>
-              </span>
-              <span class="card-user">
-                <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
-              </span>
-              <%# link_to "", edit_user_outfit_path(outfit), class: "card-link" %>
+        <div class="row">
+          <% current_user.outfits.each do |outfit| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card">
+                <span class="card-bg" style="background-image:url('https://unsplash.it/600/500?image=804')"></span>
+                <span class="card-gradient"></span>
+                <span class="card-category"><%= outfit.style%></span>
+                <span class="card-text">
+                  <h2><%= outfit.title %></h2>
+                </span>
+                <span class="card-user">
+                  <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
+                </span>
+                <%= link_to "", user_outfit_path(current_user, outfit), class: "card-link" %>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
 
       <% end %>
 
