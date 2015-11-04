@@ -5,7 +5,6 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
-
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -16,8 +15,14 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'faker'
-
+gem "geocoder"
 gem 'country_select'
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'

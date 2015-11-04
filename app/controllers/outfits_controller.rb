@@ -1,11 +1,18 @@
 class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
   before_action :set_style_and_sizes, only: [:new, :edit]
+
   def index
     @outfits = Outfit.all
+    @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
+      marker.lat outfit.latitude
+      marker.lng outfit.longitude
+    end
   end
 
   def show
+    @outfit = Outfit.find(params[:id])
+    @alert_message = "You are viewing #{@outfit.name}"
   end
 
   def new

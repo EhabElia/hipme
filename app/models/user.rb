@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_update :fill_address
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-  has_many :outfits
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,4 +25,9 @@ class User < ActiveRecord::Base
 
   # properties
   validates :firstname, presence: true
+
+  def fill_address
+    address = "#{street} #{zip} #{city} #{country}"
+  end
+
 end
