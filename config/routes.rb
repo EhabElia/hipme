@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     collection do
       get 'styles'
     end
+    member do
+      get 'details'
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
