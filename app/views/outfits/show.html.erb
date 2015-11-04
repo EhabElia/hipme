@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <img src="http://unsplash.it/500x500">
+      <%= image_tag @outfit.picture.url(:large) %>
     </div>
     <div class="col-xs-6">
       <h2><%= @outfit.title %></h2>
@@ -10,6 +10,7 @@
       <p><%= @outfit.size %></p>
       <p><%= @outfit.style %></p>
       <%= link_to "EDIT", edit_outfit_path(@outfit), class: "btn btn-warning" %>
+      <%= link_to "DELETE", outfit_path(@outfit), method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
 </div>
