@@ -11,8 +11,6 @@ class OutfitsController < ApplicationController
   end
 
   def show
-    @outfit = Outfit.find(params[:id])
-    @alert_message = "You are viewing #{@outfit.name}"
   end
 
   def new
