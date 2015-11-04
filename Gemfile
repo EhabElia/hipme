@@ -15,6 +15,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
 
 
 gem 'country_select'

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <img src="http://unsplash.it/500x500">
+      <%= image_tag @outfit.picture.url(:large) %>
     </div>
     <div class="col-xs-6">
       <h2><%= @outfit.title %></h2>
