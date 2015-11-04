@@ -36,31 +36,37 @@
     <h2><%= title %></h2>
     <div class="profile-tab">
 
-      <%# if current_user.outfits.nil? %><% if false %>
-        <p><i class="fa fa-exclamation-triangle"></i>You have not posted any outfit yet :
-          <%= link_to "post your first outfit", "#" %> <!-- new_user_outfit_path -->
-        </p>
+      <% if current_user.outfits.nil? %>
+
+        <p><i class="fa fa-exclamation-triangle"></i>You have not posted any outfit yet :</p>
+        <%= link_to "Post New Outfit", new_user_outfit_path(current_user), class: "btn btn-warning" %>
 
       <% else %>
 
-        <div class="row">
-          <% current_user.outfits.each do |outfit| %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="card">
-                <span class="card-bg" style="background-image:url('https://unsplash.it/600/500?image=804')"></span>
-                <span class="card-gradient"></span>
-                <span class="card-category"><%= outfit.style%></span>
-                <span class="card-text">
-                  <h2><%= outfit.title %></h2>
-                </span>
-                <span class="card-user">
-                  <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
-                </span>
-                <%= link_to "", user_outfit_path(current_user, outfit), class: "card-link" %>
+
+          <div class="row">
+            <% current_user.outfits.each do |outfit| %>
+              <div class="col-xs-12 col-sm-4">
+                <div class="card">
+                  <span class="card-bg" style="background-image:url('<%=outfit.picture.url(:large)%>')"></span>
+                  <span class="card-gradient"></span>
+                  <span class="card-category"><%= outfit.style%></span>
+                  <span class="card-text">
+                    <h2><%= outfit.title %></h2>
+                  </span>
+                  <span class="card-user">
+                    <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
+                  </span>
+                  <%= link_to "", user_outfit_path(current_user, outfit), class: "card-link" %>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <%= link_to "Post New Outfit", new_user_outfit_path(current_user), class: "btn btn-warning" %>
+          </div>
+
+
 
       <% end %>
 

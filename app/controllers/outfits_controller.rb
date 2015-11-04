@@ -13,9 +13,9 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    @outfit = Outfit.new(outfit_params)
+    @outfit = current_user.outfits.new(outfit_params)
     if @outfit.save
-      redirect_to outfit_path(@outfit) # TODO to be corrected
+      redirect_to user_outfit_path(@outfit.user, @outfit)
     else
       render :new
     end
