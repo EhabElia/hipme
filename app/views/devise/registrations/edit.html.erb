@@ -1,43 +1,157 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <div class="navigation">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <!-- BODY HEADER -->
+  <div class="body-header">
+    <div class="col-xs-12 col-md-2 col-md-offset-2">
+      <%= image_tag "http://unsplash.it/220x20", class: "img-home", id: "profile-pic" %>
+    </div>
+    <div class="col-xs-12 col-md-4 col-md-offset-r-2">
+      <h2><%= current_user.firstname.capitalize %> <%= current_user.lastname.upcase unless current_user.lastname.nil? %></h2>
+      <% if current_user.lastname.nil? || current_user.street.nil? || current_user.city.nil? || current_user.zip.nil? || current_user.country.nil? %>
+        <p><i class="fa fa-exclamation-triangle"></i> Your profile is not complete yet :
+          <%= link_to "complete your profile now", "#edit-profile" %>
+        </p>
+      <% else %>
+        <p><%= "#{current_user.street}, #{current_user.zip} #{current_user.city}, #{current_user.country}" %></p>
+      <% end %>
 
-  <div class="form-inputs">
+    </div>
+    <div class="col-xs-12 col-md-2 col-md-offset-r-2">
+      <h2><%= "#{current_user.outfits.count} outfit" unless current_user.outfits.nil? %><%= "s" if current_user.outfits.count > 1 %></h2>
+      <ul>
+        <li>X bookings</li>
+        <li>X€ earned so far</li>
+      </ul>
 
-    <h3>You</h3>
-
-    <%= f.input :firstname, required: false, autofocus: true %>
-    <%= f.input :lastname, required: false %>
-
-    <h3>Address</h3>
-
-    <%= f.input :street, required: false %>
-    <%= f.input :zip, required: false %>
-    <%= f.input :city, required: false %>
-    <%= f.input :country, required: false %>
-
-    <h3>Identification</h3>
-
-
-    <%= f.input :email, required: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <!-- BODY CONTAINER -->
+  <div class="container">
+
+    <!-- user's outfits -->
+    <% title = current_user.outfits.nil? ? "No outfit yet" : "Your #{current_user.outfits.count} outfit" %>
+    <% title = title + "s" if current_user.outfits.count > 1 %>
+
+    <h2><%= title %></h2>
+    <div class="profile-tab">
+
+      <% if current_user.outfits.nil? %>
+
+        <p><i class="fa fa-exclamation-triangle"></i>You have not posted any outfit yet :</p>
+        <%= link_to "Post New Outfit", new_user_outfit_path(current_user), class: "btn btn-warning" %>
+
+      <% else %>
+
+
+          <div class="row">
+            <% current_user.outfits.each do |outfit| %>
+              <div class="col-xs-12 col-sm-4">
+                <div class="card">
+                  <span class="card-bg" style="background-image:url('<%=outfit.picture.url(:large)%>')"></span>
+                  <span class="card-gradient"></span>
+                  <span class="card-category"><%= outfit.style%></span>
+                  <span class="card-text">
+                    <h2><%= outfit.title %></h2>
+                  </span>
+                  <span class="card-user">
+                    <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
+                  </span>
+                  <%= link_to "", user_outfit_path(current_user, outfit), class: "card-link" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <%= link_to "Post New Outfit", new_user_outfit_path(current_user), class: "btn btn-warning" %>
+          </div>
+
+
+
+      <% end %>
+
+    </div>
+
+     <!-- user's outfits -->
+    <h2>Your X bookings</h2>
+    <div class="profile-tab">TODO</div>
+
+    <!-- profile edition -->
+    <h2>Edit your <%= resource_name.to_s.humanize %> profile</h2>
+    <div class="profile-tab" id="edit-profile">
+
+      <div class="row">
+
+        <div class="col-xs-12 col-md-4">
+
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+
+                <h4>You</h4>
+
+                <%= f.input :firstname, required: false, autofocus: true %>
+                <%= f.input :lastname, required: true %>
+                <%= f.input :size, collection: Outfit::ALL_SIZES, required: true %>
+
+              </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+              <div class="form-inputs">
+
+                <h4>Address</h4>
+
+                <%= f.input :street, required: true %>
+                <%= f.input :zip, required: true %>
+                <%= f.input :city, required: true %>
+                <%= f.input :country, required: true   %>
+
+              </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+              <div class="form-inputs">
+
+                <h4>Identification</h4>
+
+                <%= f.input :email, required: true %>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+
+                <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+                <%= f.input :password_confirmation, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+
+              </div>
+            </div>
+
+            <!-- validation edition user form -->
+            <div class="row">
+              <div class="col-xs-12 col-md-4 col-md-offset-4 text-center">
+                <div class="form-actions">
+                  <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+                  <%= f.button :submit, "Confirm changes" %>
+                </div>
+              </div>
+            </div>
+
+            <!-- profile cancellation -->
+            <div class="row">
+               <div class="col-xs-12 text-right">
+                  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+              </div>
+            </div>
+
+        <% end %>
+
+      </div>
+
+
+
+    </diV>
+
   </div>
-<% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
