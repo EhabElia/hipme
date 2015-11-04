@@ -23,10 +23,14 @@ ActiveRecord::Schema.define(version: 20151104150014) do
     t.string   "size"
     t.string   "style"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "outfits", ["user_id"], name: "index_outfits_on_user_id", using: :btree
