@@ -1,13 +1,10 @@
 <nav class="navbar-wagon navbar-wagon-fixed">
   <div class="container navbar-wagon-container">
-
     <a href="/">
       <%= image_tag "logo.png" %>
     </a>
-
     <div class="navbar-wagon-pusher"></div>
-
-    <% if user_signed_in? %>
+      <% if user_signed_in? %>
       <%# link_to "#", class: "navbar-wagon-item navbar-wagon-link hidden-xs" do %>
         <!-- <div class="icon-badge-container"> -->
           <!-- <i class="fa fa-envelope-o"></i> -->
@@ -22,7 +19,8 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <div data-toggle="dropdown">
-            <p class="btn btn-default" style="background-image:url('http://placehold.it/30x30');">HIP</p>
+            <p class="btn btn-default" style="background-image:url('<%= current_user.picture %>');">HIP</p>
+            <!-- <p class="btn btn-default" style="background-image:url('http://placehold.it/30x30');">HIP</p> -->
           </div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -43,37 +41,33 @@
           </ul>
         </div>
       </div>
+    </div>
 
     <% else %>
 
-       <div class="navbar-wagon-item hidden-md hidden-lg">
-        <div class="dropdown">
-          <%# image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <div data-toggle="dropdown">
-            <p class="btn btn-default">HIP</p>
-          </div>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
-            </li>
-            <li>
-              <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path %>
-            </li>
-          </ul>
+     <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <%# image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <div data-toggle="dropdown">
+          <p class="btn btn-default">HIP</p>
         </div>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
+          </li>
+          <li>
+            <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path %>
+          </li>
+        </ul>
       </div>
-
-      <%= link_to "Hip people and make $", new_user_registration_path, class: "btn btn-warning hidden-xs hidden-sm" %>
-      <hr class="hidden-xs hidden-sm">
-      <%= link_to "How it works", "#", class: "hidden-xs hidden-sm" %>
-      <hr class="hidden-xs hidden-sm">
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "hidden-xs hidden-sm" %>
-      <hr class="hidden-xs hidden-sm">
-      <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "hidden-xs hidden-sm" %>
-
-
+    </div>
+    <%= link_to "Hip people and make $", new_user_registration_path, class: "btn btn-warning hidden-xs hidden-sm" %>
+    <hr class="hidden-xs hidden-sm">
+    <%= link_to "How it works", "#", class: "hidden-xs hidden-sm" %>
+    <hr class="hidden-xs hidden-sm">
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "hidden-xs hidden-sm" %>
+    <hr class="hidden-xs hidden-sm">
+    <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "hidden-xs hidden-sm" %>
     <% end %>
-
-
   </div>
 </nav>
