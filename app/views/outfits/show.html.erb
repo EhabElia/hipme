@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container padded">
   <div class="row">
     <div class="col-xs-6">
-      <%= image_tag @outfit.picture.url(:large) %>
+      <%= image_tag @outfit.picture.url(:large), width: "100%" %>
     </div>
     <div class="col-xs-6">
       <h2><%= @outfit.title %></h2>
@@ -14,11 +14,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      alert('<%= j @alert_message %>');
-    });
-  <% end %>
-<% end %>
