@@ -10,8 +10,29 @@ class OutfitsController < ApplicationController
     end
   end
 
-    def styles
+  def styles
     @outfits = Outfit.all
+
+    if params[:address] && params[:address] != ""
+      @outfits = @outfits.near(params[:address], params[:distance])
+    else
+      # LOL let's force "PARIS" if no address given
+      @outfits = @outfits.near("Paris, France", params[:distance])
+    end
+
+    if params[:style] && params[:style] != "all"
+      @outfits = @outfits.where(style: params[:style])
+    end
+
+    if params[:size] && params[:size] != "all"
+      @outfits = @outfits.where(size: params[:size])
+    end
+
+    if params[:checkin] || params[:checkout]
+      # @outfits = Booking.where
+    end
+
+    # @outfits = filter(search_params) if params
     @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
       marker.lat outfit.latitude
       marker.lng outfit.longitude
@@ -65,5 +86,6 @@ class OutfitsController < ApplicationController
     @styles = Outfit::ALL_STYLES
     @sizes = Outfit::ALL_SIZES
   end
+
 
 end
