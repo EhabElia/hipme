@@ -28,9 +28,9 @@ style_per_user = 5; # number of styles generated for each user
 
 # create 1 user for each tester
 User.destroy_all if clean_before_seed
-User.create(email: "max@hipme.fr", firstname: "maxime", password: "uriennnn", country: "France", city:"Paris", zip:"75001", street:"22 place Vendome")
-User.create(email: "pedro@hipme.fr", firstname: "pedro", password: "duqueeee", country: "France", city:"Paris", zip:"75004", street:"41 boulevard bourdon")
-User.create(email: "ehab@hipme.fr", firstname: "ehab", password: "eliaaaaa", country: "France", city:"Paris", zip:"75004", street:"4 Rue Caron")
+User.create(email: "max@hipme.fr", firstname: "maxime", password: "uriennnn", country: "FR", city: "Paris", zip: "75001", street: "22 place Vendome")
+User.create(email: "pedro@hipme.fr", firstname: "pedro", password: "duqueeee", country: "FR", city: "Paris", zip: "75004", street: "41 boulevard bourdon")
+User.create(email: "ehab@hipme.fr", firstname: "ehab", password: "eliaaaaa", country: "FR", city: "Paris", zip: "75004", street: "4 Rue Caron")
 
 # create X styles for each user
 Outfit.delete_all if clean_before_seed
