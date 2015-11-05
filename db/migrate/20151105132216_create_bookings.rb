@@ -1,0 +1,13 @@
+class CreateBookings < ActiveRecord::Migration
+  def change
+    create_table :bookings do |t|
+      t.date :checkin
+      t.date :checkout
+      t.references :user, index: true, foreign_key: true
+      t.references :outfit, index: true, foreign_key: true
+      t.float :total_price
+
+      t.timestamps null: false
+    end
+  end
+end
