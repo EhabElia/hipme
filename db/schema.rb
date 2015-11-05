@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20151105110156) do
     t.integer  "user_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -58,9 +60,6 @@ ActiveRecord::Schema.define(version: 20151105110156) do
     t.string   "size"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
