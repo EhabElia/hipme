@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105110156) do
+ActiveRecord::Schema.define(version: 20151105155017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date     "checkin"
+    t.date     "checkout"
+    t.integer  "user_id"
+    t.integer  "outfit_id"
+    t.float    "total_price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bookings", ["outfit_id"], name: "index_bookings_on_outfit_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 
   create_table "outfits", force: :cascade do |t|
     t.string   "title"
@@ -50,7 +63,6 @@ ActiveRecord::Schema.define(version: 20151105110156) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "picture"
     t.string   "token"
     t.datetime "token_expiry"
     t.string   "country"
@@ -60,10 +72,16 @@ ActiveRecord::Schema.define(version: 20151105110156) do
     t.string   "size"
     t.string   "firstname"
     t.string   "lastname"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bookings", "outfits"
+  add_foreign_key "bookings", "users"
   add_foreign_key "outfits", "users"
 end

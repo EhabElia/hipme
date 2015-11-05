@@ -36,6 +36,7 @@ class OutfitsController < ApplicationController
   end
 
   def details
+    @booking = Booking.new
   end
 
   def show
