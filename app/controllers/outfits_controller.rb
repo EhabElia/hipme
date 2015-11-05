@@ -29,9 +29,7 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    new_outfit = outfits_params
-    # new_outfit['address'] = "#{current_user.street} #{current_user.zip} #{current_user.city} #{current_user.country}"
-    @outfit = current_user.outfits.new(new_outfit)
+    @outfit = current_user.outfits.new(outfit_params)
     if @outfit.save
       redirect_to user_outfit_path(@outfit.user, @outfit)
     else
@@ -43,9 +41,7 @@ class OutfitsController < ApplicationController
   end
 
   def update
-    new_outfit = outfits_params
-    # new_outfit['address'] = "#{current_user.street} #{current_user.zip} #{current_user.city} #{current_user.country}"
-    @outfit.update(new_outfit)
+    @outfit.update(outfit_params)
     redirect_to user_outfit_path(@outfit.user, @outfit)
   end
 
