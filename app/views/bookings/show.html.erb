@@ -2,14 +2,16 @@
 
   <!-- BODY CONTAINER -->
   <div class="container">
-    <div class="row text-center">
-      <%= image_tag @outfit.picture %>
-    </div>
-    <div class="row text-center">
-    <h1>Thanks for your booking!</h1>
-    <h2>Your checkin date is: <%= @booking.checkin %> </h2>
-    <h2>Your checkout date is: <%= @booking.checkout %> </h2>
-    <h4> Total price: € <%= @booking.total_price %> </h4>
+    <div class="row">
+      <div class="col-xs-6">
+        <h1>Thanks for your booking!</h1>
+        <h2>Your checkin date is: <%= @booking.checkin %> </h2>
+        <h2>Your checkout date is: <%= @booking.checkout %> </h2>
+        <h4> Total price: € <%= @booking.total_price %> </h4>
+      </div>
+      <div class="col-xs-6">
+        <%= image_tag @outfit.picture(:large), width: "100%" %>
+      </div>
     </div>
   </div>
 </div>
