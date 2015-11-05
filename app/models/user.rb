@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  after_update :fill_address
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
@@ -23,11 +23,9 @@ class User < ActiveRecord::Base
 
   #dependencies
   has_many :outfits, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   # properties
   validates :firstname, presence: true
 
-  def fill_address
-    address = "#{street} #{zip} #{city} #{country}"
-  end
 end
