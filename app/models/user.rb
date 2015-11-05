@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
 
+  has_attached_file :picture,
+  styles: {medium: "300x300", thumb: "100x100"}
+validates_attachment_content_type :picture,
+  content_type: /\Aimage\/.*\z/
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   after_update :fill_address
@@ -15,7 +20,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.firstname = auth.info.first_name
       user.lastname = auth.info.last_name
-      user.picture = auth.info.image
+      user.picture = process_uri(auth.info.image)
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
@@ -30,4 +35,36 @@ class User < ActiveRecord::Base
   def fill_address
     address = "#{street} #{zip} #{city} #{country}"
   end
+
+  def self.process_uri(uri)
+    avatar_url = URI.parse(uri)
+    avatar_url.scheme = 'https'
+    avatar_url.to_s
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

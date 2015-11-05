@@ -3,7 +3,7 @@
   <!-- BODY HEADER -->
   <div class="body-header">
     <div class="col-xs-12 col-md-2 col-md-offset-2">
-      <%= image_tag "http://unsplash.it/220x20", class: "img-home", id: "profile-pic" %>
+      <%= image_tag current_user.picture, class: "img-home", id: "profile-pic" %>
     </div>
     <div class="col-xs-12 col-md-4 col-md-offset-r-2">
       <h2><%= current_user.firstname.capitalize %> <%= current_user.lastname.upcase unless current_user.lastname.nil? %></h2>
@@ -14,7 +14,6 @@
       <% else %>
         <p><%= "#{current_user.street}, #{current_user.zip} #{current_user.city}, #{current_user.country}" %></p>
       <% end %>
-
     </div>
     <div class="col-xs-12 col-md-2 col-md-offset-r-2">
       <h2><%= "#{current_user.outfits.count} outfit" unless current_user.outfits.nil? %><%= "s" if current_user.outfits.count > 1 %></h2>
@@ -22,7 +21,6 @@
         <li>X bookings</li>
         <li>X€ earned so far</li>
       </ul>
-
     </div>
   </div>
 
@@ -35,15 +33,10 @@
 
     <h2><%= title %></h2>
     <div class="profile-tab">
-
       <% if current_user.outfits.nil? %>
-
         <p><i class="fa fa-exclamation-triangle"></i>You have not posted any outfit yet :</p>
         <%= link_to "Post New Outfit", new_user_outfit_path(current_user), class: "btn btn-warning" %>
-
       <% else %>
-
-
           <div class="row">
             <% current_user.outfits.each do |outfit| %>
               <div class="col-xs-12 col-sm-4">
@@ -65,11 +58,7 @@
           <div class="row text-center">
             <%= link_to "Post New Outfit", new_user_outfit_path(current_user), class: "btn btn-warning" %>
           </div>
-
-
-
       <% end %>
-
     </div>
 
      <!-- user's outfits -->
@@ -95,37 +84,37 @@
                 <%= f.input :firstname, required: false %>
                 <%= f.input :lastname, required: true %>
                 <%= f.input :size, collection: Outfit::ALL_SIZES, required: true %>
+                <%= f.input :picture %>
 
               </div>
         </div>
         <div class="col-xs-12 col-md-4">
-              <div class="form-inputs">
+          <div class="form-inputs">
 
-                <h4>Address</h4>
+            <h4>Address</h4>
 
-                <%= f.input :street, required: true %>
-                <%= f.input :zip, required: true %>
-                <%= f.input :city, required: true %>
-                <%= f.input :country, required: true   %>
+            <%= f.input :street, required: true %>
+            <%= f.input :zip, required: true %>
+            <%= f.input :city, required: true %>
+            <%= f.input :country, required: true   %>
 
-              </div>
+          </div>
         </div>
         <div class="col-xs-12 col-md-4">
-              <div class="form-inputs">
+          <div class="form-inputs">
 
-                <h4>Identification</h4>
+            <h4>Identification</h4>
 
-                <%= f.input :email, required: true %>
+            <%= f.input :email, required: true %>
 
-                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-                <% end %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
 
-                <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-                <%= f.input :password_confirmation, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-
-              </div>
-            </div>
+            <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+            <%= f.input :password_confirmation, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+          </div>
+        </div>
 
             <!-- validation edition user form -->
             <div class="row">
@@ -139,19 +128,12 @@
 
             <!-- profile cancellation -->
             <div class="row">
-               <div class="col-xs-12 text-right">
-                  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+             <div class="col-xs-12 text-right">
+                <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
               </div>
             </div>
-
         <% end %>
-
       </div>
-
-
-
     </diV>
-
   </div>
-
 </div>
