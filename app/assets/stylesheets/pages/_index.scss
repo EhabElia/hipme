@@ -8,11 +8,14 @@
 
 .body-header {
   background-color:#BF2332;
-  height: 250px;
+  min-height: 240px;
   padding-top: 15px;
   padding-bottom: 15px;
   color: white;
   margin-top: -30px;
+  display: flex;
+  align-items: center;
+  line-height: 65px;
 }
 
 .body-header img#profile-pic {
@@ -24,3 +27,5 @@
   padding: 10px;
   min-height: 100px;
 }
+
+

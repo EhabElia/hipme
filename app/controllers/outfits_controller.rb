@@ -10,8 +10,25 @@ class OutfitsController < ApplicationController
     end
   end
 
-    def styles
+  def styles
     @outfits = Outfit.all
+    if params[:address]
+      @outfits = @outfits.near(params[:address], 5)
+    end
+
+    if params[:style]
+      @outfits = @outfits.where(style: params[:style])
+    end
+
+    if params[:size]
+      @outfits = @outfits.where(size: params[:size])
+    end
+
+    if params[:checkin] || params[:checkout]
+      # @outfits = Booking.where
+    end
+
+    # @outfits = filter(search_params) if params
     @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
       marker.lat outfit.latitude
       marker.lng outfit.longitude
@@ -64,5 +81,6 @@ class OutfitsController < ApplicationController
     @styles = Outfit::ALL_STYLES
     @sizes = Outfit::ALL_SIZES
   end
+
 
 end

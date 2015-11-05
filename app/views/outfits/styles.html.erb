@@ -3,7 +3,89 @@
   <!-- BODY HEADER -->
   <div class="body-header">
     <div class="container">
-      <p id="pourquoi-tu-regardes-ca"><i>ici bientôt il y aura des filters - demo style \O/</i></p>
+
+<!--
+
+      <%= form_tag styles_outfits_path do |f| %>
+        <%= label_tag(:q, "Search for:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+ -->
+      <form class="form-inline" action="" method="GET">
+
+        <div class="row">
+          <div class="col-xs-12 col-md-1">
+            <label for="address">Location:</label>
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <input id="address" type="text" class="form-control input-lg" style="width:100%;" aria-label="..." placeholder="Williamsburg, NY">
+          </div>
+          <div class="col-xs-12 col-md-1 text-center">
+            <label for="distance">Range</label>
+          </div>
+          <div class="col-xs-12 col-md-2">
+            <select class="form-control input-lg" name="distance" style="width:100%;">
+              <option value="2">2km</option>
+              <option value="5" selected>5km</option>
+              <option value="10">10km</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-xs-12 col-md-1 text-right">
+            <label for="size">Size</label>
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <select id="size" style="width:100%;" class="form-control input-lg">
+              <option value="">All sizes</option>
+              <option>165cm</option>
+              <option>170cm</option>
+              <option>175cm</option>
+              <option>180cm</option>
+              <option>185cm</option>
+              <option>190cm</option>
+            </select>
+          </div>
+
+          <div class="col-xs-12 col-md-1 text-right">
+            <label for="style">Allure</label>
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <select id="style" style="width:100%;" class="form-control input-lg">
+              <option value="">All styles</option>
+              <option>Urban</option>
+              <option>Hipster</option>
+              <option>For a job interview</option>
+              <option>For a night out</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-md-1 text-right">
+            <label for="checkin">From</label>
+          </div>
+          <div class="col-xs-12 col-md-4" >
+
+            <input id="checkin" type="date" class="form-control input-lg" style="width:100%;" aria-label="..." placeholder="10/11/2015">
+          </div>
+          <div class="col-xs-12 col-md-1 text-center">
+            <label for="checkout">To</label>
+          </div>
+          <div class="col-xs-12 col-md-4" >
+            <input id="checkout" type="date" class="form-control input-lg" style="width:100%;" aria-label="..." placeholder="12/11/2015">
+          </div>
+          <div class="col-xs-12 col-md-2 text-right" >
+            <input type="submit" name="submit" value="HIP ME!" class="btn btn-warning btn-lg"></input>
+          </div>
+        </div>
+
+      </form>
     </div>
   </div>
 
