@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104150014) do
+ActiveRecord::Schema.define(version: 20151105110156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20151104150014) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "outfits", ["user_id"], name: "index_outfits_on_user_id", using: :btree
@@ -48,6 +46,11 @@ ActiveRecord::Schema.define(version: 20151104150014) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "picture"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.string   "country"
     t.string   "city"
     t.integer  "zip"
@@ -55,14 +58,9 @@ ActiveRecord::Schema.define(version: 20151104150014) do
     t.string   "size"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "picture"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "token"
-    t.datetime "token_expiry"
     t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
