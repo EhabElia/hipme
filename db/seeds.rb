@@ -8,7 +8,24 @@
 
 require "faker"
 # SEEDS
-hipword = ["look", "style", "fame", "allure", "genre", "air", "eleganza", "elegance", "apparence", "chic", "posture"]
+hipword = ["look", "style", "fame", "allure", "genre", "air", "eleganza", "elegance", "apparence", "chic", "posture","etsy", "twee", "hoodie", "Banksy", "retro", "synth", "single-origin coffee",
+      "art", "party", "cliche", "artisan", "Williamsburg", "squid",
+      "helvetica", "keytar", "American Apparel", "craft beer", "food truck",
+      "you probably haven't heard of them", "cardigan", "aesthetic", "raw denim",
+      "sartorial", "gentrify", "lomo", "vice", "Pitchfork", "Austin",
+      "sustainable", "salvia", "organic", "thundercats", "PBR", "iPhone",
+      "lo-fi", "skateboard", "jean shorts", "next level", "beard", "tattooed",
+      "trust fund", "Four Loko", "master cleanse", "ethical", "high life",
+      "wolf", "moon", "fanny pack", "8-bit", "Carles",
+      "Shoreditch", "seitan", "freegan", "keffiyeh", "biodiesel", "quinoa",
+      "farm-to-table", "fixie", "viral", "chambray", "scenester", "leggings",
+      "readymade", "Brooklyn", "Wayfarers", "Marfa", "put a bird on it",
+      "dreamcatcher", "photo booth", "tofu", "mlkshk", "vegan", "vinyl", "DIY",
+      "banh mi", "bicycle rights", "before they sold out", "gluten-free", "yr",
+      "butcher", "blog", "whatever", "+1", "Cosby Sweater", "VHS", "messenger bag",
+      "cred", "locavore", "mustache", "tumblr", "Portland", "mixtape", "fap",
+      "letterpress", "McSweeney's", "stumptown", "brunch",
+      "irony", "echo park"]
 all_styles = Outfit::ALL_STYLES
 all_sizes = Outfit::ALL_SIZES
 
@@ -37,9 +54,9 @@ Outfit.delete_all if clean_before_seed
 User.all.each do |user|
   puts "-----\nCreating Outfit for user : #{user.email.upcase}" if print_to_console
   style_per_user.times {
-    new_outfit = Outfit.new(
-        title: Faker::Name.first_name + "'s " + Faker::Commerce.color + " " + hipword[rand(hipword.size-1)],
-        description: Faker::Lorem.paragraphs(1, true),
+   new_outfit = Outfit.new(
+        title: Faker::Name.first_name + "'s " + hipword[rand(hipword.size-1)] + ([true, false].sample ? " " : " #{Faker::Commerce.color} ") + hipword[rand(hipword.size-1)],
+        description: Faker::Lorem.sentences(10),
         price: ((rand(10) + 5) * 5 - 1) + 0.99, # price from 24.99 to 74.99
         size: all_sizes[rand(all_sizes.size-1)],
         style: all_styles[rand(all_sizes.size-1)],
