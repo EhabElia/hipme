@@ -12,15 +12,19 @@ class OutfitsController < ApplicationController
 
   def styles
     @outfits = Outfit.all
-    if params[:address]
-      @outfits = @outfits.near(params[:address], 5)
+
+    if params[:address] && params[:address] != ""
+      @outfits = @outfits.near(params[:address], params[:distance])
+    else
+      # LOL let's force "PARIS" if no address given
+      @outfits = @outfits.near("Paris, France", params[:distance])
     end
 
-    if params[:style]
+    if params[:style] && params[:style] != "all"
       @outfits = @outfits.where(style: params[:style])
     end
 
-    if params[:size]
+    if params[:size] && params[:size] != "all"
       @outfits = @outfits.where(size: params[:size])
     end
 
