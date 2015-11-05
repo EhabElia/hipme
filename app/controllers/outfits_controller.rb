@@ -12,7 +12,7 @@ class OutfitsController < ApplicationController
 
     def styles
     @outfits = Outfit.all
-    @markers = Gmaps4rails.build_markers(@users) do |outfit, marker|
+    @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
       marker.lat outfit.latitude
       marker.lng outfit.longitude
     end
