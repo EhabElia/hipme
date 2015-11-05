@@ -118,17 +118,6 @@
       </div><!-- col-xs-12 col-sm8 -->
       <div id="map"></div>
 
-<!--        <%= javascript_tag do %>
-        $(window).on('scroll', function(e){
-          alert("lol");
-          if ($(this).scrollTop() > 100) {
-            $('#map').css('margin-top', '+200px');
-          } else {
-            $('#map').css('margin-top', '0px');
-          }
-        });
-      <% end %> -->
-
     </div> <!-- row -->
 
   <% else %> <!-- @outfits.size = 0 -->
@@ -137,7 +126,7 @@
       <div class="row text-center">
         <h2>OH NOES!</h2>
         <i style="font-size:100pt;" class="fa fa-frown-o"></i>
-        <h4>No outfit fits your selection, you big boy.</h4>
+        <h4>No outfit fits in your selection, you big boy.</h4>
         <p>Maybe you should enlarge your selection ...</p>
       </div>
     </div>
