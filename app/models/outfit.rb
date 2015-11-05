@@ -20,5 +20,4 @@ class Outfit < ActiveRecord::Base
   def set_address
     self.address = "#{self.user.street} #{self.user.zip} #{self.user.city} #{self.user.country}"
   end
-
 end
