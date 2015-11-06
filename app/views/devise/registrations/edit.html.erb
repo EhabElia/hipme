@@ -61,7 +61,7 @@
                     <h2><%= outfit.title %></h2>
                   </span>
                   <span class="card-user">
-                    <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
+                    <img src="<%=current_user.picture%>" class="avatar avatar-bordered"/>
                   </span>
                   <%= link_to "", user_outfit_path(current_user, outfit), class: "card-link" %>
                 </div>
@@ -75,8 +75,8 @@
     </div>
 
      <!-- user bookings -->
-    <h2>Your X bookings</h2>
-    <p> <%= current_user.outfits_bookings.count %> </p>
+    <h2>I've received <%= current_user.outfits_bookings.count %> booking<%= "s" if current_user.outfits_bookings.count > 1 %></h2>
+
 
     <div class="profile-tab">
       <% if current_user.outfits_bookings.nil? %>
@@ -94,9 +94,42 @@
                     <h2><%= booking.outfit.title %></h2>
                   </span>
                   <span class="card-user">
-                    <img src="http://placehold.it/50x50" class="avatar avatar-bordered"/>
+                    <img src="booking.outfit.user.picture" class="avatar avatar-bordered"/>
                   </span>
                   <%= link_to "", user_outfit_path(current_user, booking.outfit), class: "card-link" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <%= link_to "Book another outfit!", styles_outfits_path, class: "btn btn-primary" %>
+          </div>
+      <% end %>
+    </div>
+
+    <!-- bookings ive made -->
+
+    <h2>I've made <%= current_user.bookings.count %> booking<%= "s" if current_user.bookings.count > 1 %></h2>
+
+    <div class="profile-tab">
+      <% if current_user.bookings.nil? %>
+        <p><i class="fa fa-exclamation-triangle"></i>You have no booking yet :</p>
+        <%= link_to "Book an outfit!", styles_outfits_path, class: "btn btn-warning" %>
+      <% else %>
+          <div class="row">
+            <% current_user.bookings.each do |booking| %>
+              <div class="col-xs-12 col-sm-4">
+                <div class="card">
+                  <span class="card-bg" style="background-image:url('<%=booking.outfit.picture.url(:large)%>')"></span>
+                  <span class="card-gradient"></span>
+                  <span class="card-category"><%= booking.outfit.style%></span>
+                  <span class="card-text">
+                    <h2><%= booking.outfit.title %></h2>
+                  </span>
+                  <span class="card-user">
+                    <img src="booking.outfit.user.picture" class="avatar avatar-bordered"/>
+                  </span>
+                  <%= link_to "", outfit_booking_path(current_user, booking.id), class: "card-link" %>
                 </div>
               </div>
             <% end %>
