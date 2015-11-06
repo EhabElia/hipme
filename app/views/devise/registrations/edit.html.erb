@@ -94,16 +94,15 @@
                     <h2><%= booking.outfit.title %></h2>
                   </span>
                   <span class="card-user">
-                    <img src="booking.outfit.user.picture" class="avatar avatar-bordered"/>
+                    <img src="<%=booking.outfit.user.picture%>" class="avatar avatar-bordered"/>
                   </span>
+
                   <%= link_to "", user_outfit_path(current_user, booking.outfit), class: "card-link" %>
                 </div>
               </div>
             <% end %>
           </div>
-          <div class="row text-center">
-            <%= link_to "Book another outfit!", styles_outfits_path, class: "btn btn-primary" %>
-          </div>
+
       <% end %>
     </div>
 
@@ -127,7 +126,7 @@
                     <h2><%= booking.outfit.title %></h2>
                   </span>
                   <span class="card-user">
-                    <img src="booking.outfit.user.picture" class="avatar avatar-bordered"/>
+                    <img src="<%=booking.outfit.user.picture%>" class="avatar avatar-bordered"/>
                   </span>
                   <%= link_to "", outfit_booking_path(current_user, booking.id), class: "card-link" %>
                 </div>
