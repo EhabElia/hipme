@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :firstname
     devise_parameter_sanitizer.for(:account_update) << :firstname << :lastname << :street << :city << :zip << :country << :picture
   end
+
+  def after_sign_in_path_for(resource)
+    edit_user_registration_path
+  end
 end
