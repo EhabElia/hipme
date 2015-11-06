@@ -20,7 +20,7 @@
     <h3>Bookings:</h3>
     <% @outfit.bookings.each do |booking| %>
       <div class="col-xs-4">
-        <%= image_tag booking.user.picture %>
+        <%= image_tag booking.user.picture(:thumb), width: "50%" %>
         <p><%= booking.user.firstname + " " + booking.user.lastname %></p>
         <p><%= mail_to booking.user.email %></p>
         <p>Checkin: <%= booking.checkin %></p>
