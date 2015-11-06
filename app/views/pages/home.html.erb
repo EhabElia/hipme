@@ -12,10 +12,10 @@
         <input type="hidden" name="distance" value="5">
       </div>
       <div class="input-group">
-        <input id="checkin" name="checkin" type="date" class="form-control input-lg" aria-label="..." placeholder="10/11/2015">
+        <input id="checkin" name="checkin" value="<%= params[:checkin] %>" type="date" class="form-control input-lg" aria-label="..." placeholder="10/11/2015">
       </div>
       <div class="input-group">
-        <input id="checkout" name="checkout" type="date" class="form-control input-lg" aria-label="..." placeholder="12/11/2015">
+        <input id="checkout" name="checkout" value="<%= params[:checkout] %>" type="date" class="form-control input-lg" aria-label="..." placeholder="12/11/2015">
       </div>
       <div class="input-group">
         <select id="style" name="style" class="form-control input-lg">

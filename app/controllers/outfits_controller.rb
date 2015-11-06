@@ -28,11 +28,12 @@ class OutfitsController < ApplicationController
       @outfits = @outfits.where(size: params[:size])
     end
 
-    if params[:checkin] || params[:checkout]
-      # @outfits = Booking.where
+    if (params[:checkin] && params[:checkin] != "") && (params[:checkout] && params[:checkout] != "" )
+      @outfits = @outfits.all.select{ |o| !o.has_bookings_at_period(params[:checkin],params[:checkout]) }
+    elsif (params[:checkin] && params[:checkin] != "")
+      @outfits = @outfits.all.select{ |o| !o.has_bookings_at_period(params[:checkin],params[:checkin]) }
     end
 
-    # @outfits = filter(search_params) if params
     @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
       marker.lat outfit.latitude
       marker.lng outfit.longitude
