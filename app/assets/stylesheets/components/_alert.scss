@@ -3,9 +3,13 @@
 * ------------------------------------- */
 
 .alert {
-  margin: 0;
+  margin-top: 14px;
+  margin-left: 1372px;
+  margin-right: 13px;
   text-align: center;
   color: white;
+  position: absolute;
+  z-index: 4;
 }
 .alert-info {
   background: $green;

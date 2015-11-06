@@ -65,6 +65,8 @@
     <h2>Your X bookings</h2>
     <div class="profile-tab">TODO</div>
 
+    <% unless current_user.uid %> <!-- if user not facebook -->
+
     <!-- profile edition -->
     <h2>Edit your <%= resource_name.to_s.humanize %> profile</h2>
     <div class="profile-tab" id="edit-profile">
@@ -100,6 +102,7 @@
 
           </div>
         </div>
+
         <div class="col-xs-12 col-md-4">
           <div class="form-inputs">
 
@@ -135,5 +138,7 @@
         <% end %>
       </div>
     </diV>
+
+    <% end %> <!-- end if user not facebook -->
   </div>
 </div>

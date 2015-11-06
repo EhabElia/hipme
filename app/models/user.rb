@@ -17,7 +17,7 @@ validates_attachment_content_type :picture,
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.password = "facebook"  # Fake password for validation
       user.firstname = auth.info.first_name
       user.lastname = auth.info.last_name
       user.picture = process_uri(auth.info.image)
