@@ -6,3 +6,6 @@
 //= require underscore
 //= require gmaps/google
 
+$(document).ready(function(){
+    $('.datepicker').datepicker({ format: "dd/mm/yyyy" });
+  });

@@ -12,6 +12,7 @@ class Outfit < ActiveRecord::Base
 
   ALL_STYLES = [ "Urban", "Hipster", "For a job interview", "For a night out" ]
   ALL_SIZES = [ "165cm", "170cm", "175cm", "180cm", "185cm", "190cm" ]
+  ALL_RANGES = ["2", "5", "10"]
 
   after_validation :set_address
 
