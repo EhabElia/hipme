@@ -27,8 +27,12 @@ validates_attachment_content_type :picture,
   end
 
   #dependencies
-  has_many :outfits, dependent: :destroy
+  has_many :outfits, dependent: :destroy # as user
   has_many :bookings, dependent: :destroy
+  has_many :outfits_bookings, through: :outfits, source: :bookings
+
+  # User.outfits
+  # User.bookings.outfits
 
   # properties
   validates :firstname, presence: true
@@ -38,12 +42,13 @@ validates_attachment_content_type :picture,
     avatar_url.scheme = 'https'
     avatar_url.to_s
   end
+
 end
 
 
-
-
-
+# current_user.bookings = bookings i've made
+# current_user.outfits.each do outfit
+# outfit.user_id.
 
 
 
