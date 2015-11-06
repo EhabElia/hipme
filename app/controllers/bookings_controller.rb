@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
     end
   end
 
+
   private
 
   def set_booking
