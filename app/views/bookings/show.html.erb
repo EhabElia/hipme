@@ -11,9 +11,12 @@
         <h2>Your checkin date is: <%= @booking.checkin %> </h2>
         <h2>Your checkout date is: <%= @booking.checkout %> </h2>
         <h4> Total price: € <%= @booking.total_price %> </h4>
+        <p>Please contact: <%= @outfit.user.firstname.capitalize %> </p>
+        <p>Email: <%= @outfit.user.email %> </p>
       </div>
     </div>
   </div>
 </div>
 
 
+<%#= image_tag @outfit.user.picture(:thumb), width "20%" %>
