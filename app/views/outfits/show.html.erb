@@ -13,6 +13,25 @@
       <%= link_to "DELETE", user_outfit_path(current_user, @outfit), method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
-
-
 </div>
+<div class="container">
+  <div class="row">
+    <% if @outfit.bookings.count > 0 %>
+    <h3>Bookings:</h3>
+    <% @outfit.bookings.each do |booking| %>
+      <div class="col-xs-4">
+        <%= image_tag booking.user.picture %>
+        <p><%= booking.user.firstname + " " + booking.user.lastname %></p>
+        <p><%= mail_to booking.user.email %></p>
+        <p>Checkin: <%= booking.checkin %></p>
+        <p>Checkout: <%= booking.checkout %></p>
+        <p>Price: <%= booking.total_price %>€</p>
+      </div>
+      <%end%>
+    <%end%>
+  </div>
+</div>
+
+
+
+
