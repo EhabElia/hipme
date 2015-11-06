@@ -17,7 +17,7 @@ validates_attachment_content_type :picture,
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.password = "facebook"  # Fake password for validation
       user.firstname = auth.info.first_name
       user.lastname = auth.info.last_name
       user.picture = process_uri(auth.info.image)
@@ -27,8 +27,12 @@ validates_attachment_content_type :picture,
   end
 
   #dependencies
-  has_many :outfits, dependent: :destroy
+  has_many :outfits, dependent: :destroy # as user
   has_many :bookings, dependent: :destroy
+  has_many :outfits_bookings, through: :outfits, source: :bookings
+
+  # User.outfits
+  # User.bookings.outfits
 
   # properties
   validates :firstname, presence: true
@@ -38,12 +42,13 @@ validates_attachment_content_type :picture,
     avatar_url.scheme = 'https'
     avatar_url.to_s
   end
+
 end
 
 
-
-
-
+# current_user.bookings = bookings i've made
+# current_user.outfits.each do outfit
+# outfit.user_id.
 
 
 
