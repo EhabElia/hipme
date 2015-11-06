@@ -29,10 +29,9 @@ class OutfitsController < ApplicationController
     end
 
     if params[:checkin] || params[:checkout]
-      # @outfits = Booking.where
+      @outfits = @outfits.all.select{ |o| !o.has_bookings_at_period(params[:checkin],params[:checkout]) }
     end
 
-    # @outfits = filter(search_params) if params
     @markers = Gmaps4rails.build_markers(@outfits) do |outfit, marker|
       marker.lat outfit.latitude
       marker.lng outfit.longitude
