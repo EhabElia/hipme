@@ -59,14 +59,14 @@ common_streets = [
 ]
 
 # seed global configuration
-clean_before_seed = true; # clean objects before seeding
-print_to_console = false; # = test only when you edit this file (production : TRUE)
-save_object = true; # does not save the objects to db = test only when you edit this file
+clean_before_seed = true # clean objects before seeding
+print_to_console = true # = test only when you edit this file (production : TRUE)
+save_object = true # does not save the objects to db = test only when you edit this file
 
 # seed configuration
-users = 100; # number of users in addition to us (3 : pedro, max, ehab)
-style_per_user = (3..10); # number of styles generated for each user
-booking_per_user = (2..7)
+users = 0 # number of users in addition to us (3 : pedro, max, ehab)
+style_per_user = 3 # number of styles generated for each user
+booking_per_user = 2
 
 ##########################################
 #                                        #
@@ -109,9 +109,8 @@ end
 # create X styles for each user
 User.all.each do |user|
 
-  x = rand(style_per_user)
-  puts "\n-----\nCreating #{x} outfits for user : #{user.email.upcase}" if print_to_console
-  x.times do
+  puts "\n-----\nCreating #{style_per_user} outfits for user : #{user.email.upcase}" if print_to_console
+  style_per_user.times do
    new_outfit = Outfit.new(
         title: Faker::Name.first_name + "'s " + hipword[rand(hipword.size-1)] + ([true, false].sample ? " " : " #{Faker::Commerce.color} ") + hipword[rand(hipword.size-1)],
         description: Faker::Lorem.sentences(10),
@@ -124,9 +123,8 @@ User.all.each do |user|
     p new_outfit if print_to_console
   end
 
-  x = rand(booking_per_user)
-  puts "\n-----\nCreating #{x} bookings for user : #{user.email.upcase}" if print_to_console
-  x.times do
+  puts "\n-----\nCreating #{booking_per_user} bookings for user : #{user.email.upcase}" if print_to_console
+  booking_per_user.times do
     outfit = Outfit.all[rand(Outfit.all.size)]
     checkin = Date.today + (rand(365)) * (-1..+1).to_a.sample.to_i
     checkout = checkin + rand(2..5)
